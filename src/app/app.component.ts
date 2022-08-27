@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'online-shop';
+  constructor(private router : Router, private authService : AuthService,private userSerice:UserService){
+
+    authService.afAuth.authState.subscribe(user => {
+      if(user){
+        userSerice.save(user);
+      let returnUrl=localStorage.getItem('returnUrl');
+      console.log(returnUrl);
+      
+      if (returnUrl) {
+        localStorage.removeItem('returnUrl');
+        router.navigateByUrl(returnUrl);
+      }
+      }
+    })
+  }
 }
