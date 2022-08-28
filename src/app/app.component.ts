@@ -12,12 +12,10 @@ export class AppComponent {
   title = 'online-shop';
   constructor(private router : Router, private authService : AuthService,private userSerice:UserService){
 
-    authService.afAuth.authState.subscribe(user => {
+    authService.user$.subscribe(user => {
       if(user){
         userSerice.save(user);
       let returnUrl=localStorage.getItem('returnUrl');
-      console.log(returnUrl);
-      
       if (returnUrl) {
         localStorage.removeItem('returnUrl');
         router.navigateByUrl(returnUrl);

@@ -29,13 +29,15 @@ export class AuthService {
    }
 
    logout(){
-    this.afAuth.signOut();
+    this.afAuth.signOut().then(() => {
+      window.alert('Logged out!');
+    });
    }
 
    get appUser$():Observable<AppUser | null>{
     return this.user$
       .pipe(switchMap(user => {
-        if(user) return this.userService.get(user!.uid).valueChanges();
+        if(user) {return this.userService.get(user!.uid).valueChanges();}
         return EMPTY;
       }))
    }

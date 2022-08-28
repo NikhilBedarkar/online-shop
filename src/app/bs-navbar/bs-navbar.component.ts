@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { map, Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { AppUser } from '../models/app-user';
-
 
 @Component({
   selector: 'bs-navbar',
@@ -11,20 +8,13 @@ import { AppUser } from '../models/app-user';
   styleUrls: ['./bs-navbar.component.css'],
 })
 export class BsNavbarComponent implements OnInit {
-  appUser!: AppUser|null;
-  constructor(private af: AuthService) {
-    let v: AppUser;
-   this.af.appUser$.subscribe(user =>{ this.appUser=user
-   console.log(user,this.appUser);});
-   console.log(this.appUser);
-   
+  appUser!: AppUser | null;
+  constructor(private authService: AuthService) {
+    this.authService.appUser$.subscribe((user) => (this.appUser = user));
   }
-  ngOnInit(): void {
-    
-   
-  }
+  ngOnInit(): void {}
 
   logout() {
-   this.af.logout();
+    this.authService.logout();
   }
 }
