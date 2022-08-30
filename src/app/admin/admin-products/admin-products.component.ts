@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireList } from '@angular/fire/compat/database';
+import { Observable } from 'rxjs';
+import { ProductService } from 'src/app/product.service';
 
 @Component({
   selector: 'app-admin-products',
@@ -6,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent implements OnInit {
-
-  constructor() { }
+  products$!:Observable<any[]>;
+  constructor(private productService:ProductService) {
+    this.products$=productService.getAll();
+   }
 
   ngOnInit(): void {
   }
