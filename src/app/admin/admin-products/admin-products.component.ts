@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireList } from '@angular/fire/compat/database';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { DataTablesModule } from 'angular-datatables';
+import { Subject } from 'rxjs';
 import { ProductService } from 'src/app/product.service';
 
 @Component({
@@ -8,13 +8,30 @@ import { ProductService } from 'src/app/product.service';
   templateUrl: './admin-products.component.html',
   styleUrls: ['./admin-products.component.css']
 })
-export class AdminProductsComponent implements OnInit {
-  products$!:Observable<any[]>;
+export class AdminProductsComponent implements OnInit,OnDestroy {
+  products!:any[];
+  filteredProducts!:any[];
+  subscription;
+  dtOptions:DataTables.Settings = {};
+  dtTrigger:Subject<any>=new Subject<any>();
   constructor(private productService:ProductService) {
-    this.products$=productService.getAll();
+    this.subscription=productService.getAll().subscribe(p=>
+      {this.filteredProducts= this.products=p
+      this.dtTrigger.next(p);});
    }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 2
+    };
+  }
+  ngOnDestroy(): void {
+      this.subscription.unsubscribe();
+  }
+  filter(query:string){
+    this.filteredProducts=(query)?this.products.filter(p=>p.title.toLowerCase().includes(query.toLowerCase())):
+    this.products;
   }
 
 }

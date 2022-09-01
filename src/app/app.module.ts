@@ -26,6 +26,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { CategoryService } from './category.service';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './product.service';
+import { DataTablesModule } from 'angular-datatables';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { ProductService } from './product.service';
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    DataTablesModule
   ],
   providers: [
     AuthService,

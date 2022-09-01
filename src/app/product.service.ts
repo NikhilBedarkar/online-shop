@@ -12,6 +12,14 @@ export class ProductService {
     return this.db.list('/products').push(product)
   }
 
+  update(productId:any,product:any){
+    return this.db.list('/products').update(productId,product)
+  }
+
+  delete(productId:any){
+    return this.db.list('/products').remove(productId)
+  }
+
   getAll(){
     return this.db.list('/products').snapshotChanges().pipe(
       map(changes => 
