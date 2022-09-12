@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { AppUser } from '../models/app-user';
+import { ShoppingCart } from '../models/shopping-cart';
+import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
   selector: 'bs-navbar',
@@ -9,10 +12,15 @@ import { AppUser } from '../models/app-user';
 })
 export class BsNavbarComponent implements OnInit {
   appUser!: AppUser | null;
-  constructor(private authService: AuthService) {
-    this.authService.appUser$.subscribe((user) => (this.appUser = user));
+  cart$!: Observable<ShoppingCart>;
+  constructor(private authService: AuthService,private shoppingCartService:ShoppingCartService) {
+    
   }
-  ngOnInit(): void {}
+  async ngOnInit(){
+    this.authService.appUser$.subscribe((user) => (this.appUser = user));
+    this.cart$=await this.shoppingCartService.getCart();
+   
+  }
 
   logout() {
     this.authService.logout();

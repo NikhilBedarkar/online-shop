@@ -9,7 +9,7 @@
       <div class="form-group">
         <label for="price" for=""> Price </label>
         <div class="input-group">
-            <span class="input-group-text">$</span>
+            <span class="input-group-text">₹</span>
         <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control" min="0" required />
       </div>
       <div *ngIf="price.touched && price.invalid" class="alert alert-danger">
@@ -40,13 +40,9 @@
     </form>
   </div>
   <div class="col-md-6">
-    <div class="card" style="width: 18rem;">
-      <img [src]="imageURL.value" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title">{{title.value}}</h5>
-        <p class="card-text">{{price.value | currency:'INR':true}}</p>
-      </div>
-    </div>
+    <div style="width: 20rem ;">
+    <product-card [product]="product" [show-actions]="false"></product-card>
+  </div>
   </div>
 </div>
 
