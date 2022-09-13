@@ -5,6 +5,7 @@ export class ShoppingCartItem{
     imageUrl!:string;
     price!:number;
     quantity!: number;
+    category!:string;
     constructor(){
 
     }

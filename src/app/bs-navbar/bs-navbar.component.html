@@ -18,7 +18,7 @@
             </button>
         </ng-template>
         
-        <div *ngIf="appUser;else annonymousUser" ngbDropdown class="d-inline-block">
+        <div *ngIf="appUser|async as appUser;else annonymousUser" ngbDropdown class="d-inline-block">
           <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{appUser.name}}</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem routerLink="/my/orders">My order</button>

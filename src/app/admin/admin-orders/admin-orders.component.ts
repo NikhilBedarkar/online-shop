@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'jquery';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/auth.service';
+import { Order } from 'src/app/models/order';
+import { OrderService } from 'src/app/order.service';
 
 @Component({
   selector: 'app-admin-orders',
@@ -6,8 +11,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-orders.component.css']
 })
 export class AdminOrdersComponent implements OnInit {
-
-  constructor() { }
+  orders$!:Observable<any[]>;
+  constructor(orderService:OrderService,authservice:AuthService) {
+    this.orders$=orderService.getAllOrders();
+   }
 
   ngOnInit(): void {
   }

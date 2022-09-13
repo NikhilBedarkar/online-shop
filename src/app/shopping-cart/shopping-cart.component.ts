@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Product } from '../models/product';
 import { ShoppingCart } from '../models/shopping-cart';
+import { ShoppingCartItem } from '../models/shopping-cart-item';
 import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
@@ -20,5 +22,9 @@ export class ShoppingCartComponent implements OnInit {
 
   clearCart(){
     this.shoppingCartService.clearCart();
+  }
+
+  getProduct(item:ShoppingCartItem){
+   return new Product(item.$key,item.title,item.imageUrl,item.price,item.category);
   }
 }

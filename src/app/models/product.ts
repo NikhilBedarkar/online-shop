@@ -1,7 +1,9 @@
-export interface Product{
-    key:String;
-    title : string;
-    imageUrl : string;
-    price : number;
-    category:string;
+export class Product{
+    constructor(public key:string,
+        public title : string,
+        public imageUrl : string,
+        public price : number,
+        public category:string){
+           
+    }
 }

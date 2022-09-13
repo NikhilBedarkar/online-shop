@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-order-success',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-success.component.css']
 })
 export class OrderSuccessComponent implements OnInit {
-
-  constructor() { }
+orderid!:string;
+  constructor(activatedRoute:ActivatedRoute) {
+    this.orderid=activatedRoute.snapshot.paramMap.get('order-id')!;
+   }
 
   ngOnInit(): void {
   }

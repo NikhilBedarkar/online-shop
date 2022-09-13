@@ -1,27 +1,34 @@
 <h1>Shopping Cart</h1>
 <ng-container *ngIf="cart$|async as cart">
-    <p>You have {{cart.totalItemCount}} items in your cart.</p>
-    <table class="table">
+    <div class="row col-10">
+    <p>You have {{cart.totalItemCount}} items in your cart. 
+        <button *ngIf="cart.items.length" class="btn btn-light btn-sm" (click)="clearCart()">Clear Shopping Cart</button></p>
+    <table *ngIf="cart.items.length" class="table">
         <thead>
             <tr>
+                <th></th>
                 <th>Product</th>
-                <th>Quantity</th>
-                <th>Price</th>
+                <th class="text-center" style="width:230px ;">Quantity</th>
+                <th class="text-end" style="width:200px;">Price</th>
             </tr>
         </thead>
+        <tbody>
         <tr *ngFor="let item of cart.items">
+            <td> <div [style.background-image]="'url('+item.imageUrl+')'" class="thumbnail"></div></td>
             <td>{{item.title}}</td>
-            <!-- <td><product-quantity [shopping-cart]="cart" [product]="item">{{item.quantity}}</product-quantity></td> -->
-            <td>{{item.quantity}}</td>
-            <td>{{item.totalPrice|currency:'INR'}}</td>
+            <td><product-quantity [shopping-cart]="cart" [product]="getProduct(item)">{{item.quantity}}</product-quantity></td>
+            <td class="text-end">{{item.totalPrice|currency:'INR'}}</td>
         </tr>
+    </tbody>
         <tfoot>
             <tr>
                 <th></th>
-                <th>Total</th>
-                <th>{{cart.totalCartPrice|currency:'INR'}}</th>
+                <th></th>
+                <th class="text-center">Total</th>
+                <th class="text-end">{{cart.totalCartPrice|currency:'INR'}}</th>
             </tr>
         </tfoot>
     </table>
-    <button class="btn btn-danger btn-sm" (click)="clearCart()">Clear Shopping Cart</button>
+</div>
+    <a *ngIf="cart.items.length" class="btn btn-primary btn-sm" routerLink="/check-out">Checkout</a>
 </ng-container>

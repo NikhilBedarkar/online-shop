@@ -41,4 +41,7 @@ export class AuthService {
         return EMPTY;
       }))
    }
+   getappUser(uid:string):Observable<AppUser|null>{
+    return this.userService.get(uid).valueChanges();
+   }
 }
