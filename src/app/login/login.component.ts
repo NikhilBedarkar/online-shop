@@ -1,23 +1,16 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AuthService } from '../auth.service';
-
-
+import { AuthService } from 'shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-export class LoginComponent  {
+export class LoginComponent {
+  constructor(private af: AuthService, private route: ActivatedRoute) {}
 
-  constructor(private af : AuthService,private route:ActivatedRoute) {
-    // let returnUrl=this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-    // console.log(returnUrl);
-    
-   }
-
-  login(){
-   this.af.login();
+  login() {
+    this.af.login();
   }
 }
