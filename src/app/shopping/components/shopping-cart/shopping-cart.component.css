@@ -4,3 +4,11 @@
     border-radius: 100%;
     background-size: cover;
 }
+.card-header{
+    display: flex;
+    /* justify-content: center; */
+    align-content: center;
+}
+.seperator{
+    flex: auto;
+}
