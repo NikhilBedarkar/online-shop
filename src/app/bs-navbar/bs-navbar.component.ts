@@ -4,6 +4,8 @@ import { AuthService } from 'shared/services/auth.service';
 import { AppUser } from 'shared/models/app-user';
 import { ShoppingCart } from 'shared/models/shopping-cart';
 import { ShoppingCartService } from 'shared/services/shopping-cart.service';
+import {faSeedling} from '@fortawesome/free-solid-svg-icons';
+import {faCartShopping} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'bs-navbar',
@@ -11,6 +13,8 @@ import { ShoppingCartService } from 'shared/services/shopping-cart.service';
   styleUrls: ['./bs-navbar.component.css'],
 })
 export class BsNavbarComponent implements OnInit {
+  seedling=faSeedling;
+  faCartShopping=faCartShopping;
   appUser!: Observable<AppUser|null>;
   user!:any;
   cart$!: Observable<ShoppingCart>;
