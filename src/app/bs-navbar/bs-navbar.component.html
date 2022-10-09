@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark mb-4">
+<nav class="navbar navbar-expand-md fixed-top navbar-dark light mb-4">
     <div class="container">
       <a class="navbar-brand" routerLink="/"><fa-icon style="color:green ;" [icon]="seedling"></fa-icon> EveryThing Online</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,12 +13,12 @@
           </li>
         </ul>
           <ng-template #annonymousUser>
-            <button type="button" class="btn btn-outline-primary" id="login">
+            <button type="button" class="btn secondary-color btn-outline-primary" id="login">
             <a class="nav-link" routerLink="/login">Login</a>
             </button>
         </ng-template>
         <div *ngIf="appUser|async as appUser;else annonymousUser" ngbDropdown class="d-inline-block">
-          <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{appUser.name}}</button>
+          <button type="button" class="btn btn-outline-primary secondary-color" id="dropdownBasic1" ngbDropdownToggle>{{appUser.name}}</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem routerLink="/my/orders">My order</button>
             <ng-container *ngIf="appUser.isAdmin">

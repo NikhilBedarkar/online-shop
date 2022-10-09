@@ -1,7 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap/scss/bootstrap";
 
 $primary-color: green; //#63e6be
+$light:#4EB34E;
+$secondary-color:#5F5EAF;
+
+.light{
+    background: $light;
+}
+
+.secondary-color:hover{
+    background:#3c3b73 ;
+    color: white;
+}
+
+.secondary-color{
+    color: white;
+    background: $secondary-color;
+}
+
 
 .list-group-item.active{
     background-color: $primary-color;
