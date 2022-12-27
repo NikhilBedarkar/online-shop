@@ -18,12 +18,14 @@ import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ShoppingModule } from 'shopping/shopping.module';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
     BsNavbarComponent,
     HomeComponent,
     LoginComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

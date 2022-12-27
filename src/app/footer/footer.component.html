@@ -1,0 +1,36 @@
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col f-about">
+        <h5 class="text-center">About</h5>
+        <p>This is online shop to sell fresh vegetables. Made with angular.</p>
+      </div>
+      <div class="col f-categories">
+        <h5 class="text-center">Categories</h5>
+        <ul class="categories-list">
+          <li class="mb-2" *ngFor="let cat of categories">
+            <fa-icon [icon]="faArrowRight"></fa-icon>
+            <a routerLink="/" [queryParams]="{ category: cat.key }">
+              {{ cat.name }}</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="col f-contact">
+        <h5 class="text-center">Contact</h5>
+        <div class="f-contact-item mb-2">
+          <fa-icon [icon]="faLocation"></fa-icon> India
+        </div>
+        <div class="f-contact-item mb-2">
+          <fa-icon [icon]="faMailBulk"></fa-icon> store@everythingonline.com
+        </div>
+        <div class="f-contact-item mb-2">
+          <fa-icon [icon]="faPhone"></fa-icon> +91 9876543211
+        </div>
+      </div>
+    </div>
+    <div class="f-credits text-center">
+      <i><fa-icon [icon]="faCopyright"></fa-icon> Copyright </i>
+    </div>
+  </div>
+</div>
