@@ -1,0 +1,7 @@
+.text-center-justify {
+  text-align: center;
+}
+.product-container {
+  justify-content: center;
+  align-items: center;
+}

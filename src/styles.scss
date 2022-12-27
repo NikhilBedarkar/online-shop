@@ -2,7 +2,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~bootstrap/scss/bootstrap";
 
-$primary-color: green; //#63e6be
+$primary-color: #4EB34E; //#63e6be
 $light:#4EB34E;
 $secondary-color:#5F5EAF;
 
@@ -15,6 +15,9 @@ $secondary-color:#5F5EAF;
     color: white;
 }
 
+.secondary-color:active{
+    background: $secondary-color;
+}
 .secondary-color{
     color: white;
     background: $secondary-color;

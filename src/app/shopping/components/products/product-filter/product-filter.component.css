@@ -1,3 +1,6 @@
 .position-sticky{
     top: 80px;
 }
+.list-group-item{
+    font-weight: 500;
+}
